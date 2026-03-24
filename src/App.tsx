@@ -887,7 +887,7 @@ function SEOTools({ userPrefs }: { userPrefs: any }) {
       // We'll use a direct Gemini call here for simplicity
       const ai = new (await import("@google/genai")).GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-1.5-flash",
         contents: `Generate 5 short-tail and 5 long-tail TikTok SEO keywords for "${keyword}" in the "${userPrefs.niche}" niche specifically for the Philippines (PH) market. Include popular Taglish or local slang if relevant.`,
         config: {
           responseMimeType: "application/json",
