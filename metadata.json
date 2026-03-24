@@ -1,0 +1,8 @@
+{
+  "name": "TikTok Affiliate Pro",
+  "description": "An AI-powered intelligence suite for TikTok affiliates to find high-GMV products, generate SEO-optimized scripts, and ensure compliance.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

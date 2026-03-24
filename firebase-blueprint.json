@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "UserPreference": {
+      "title": "User Preference",
+      "description": "Stores user customization for the affiliate app.",
+      "type": "object",
+      "properties": {
+        "niche": { "type": "string" },
+        "targetAudience": { "type": "string" },
+        "experienceLevel": { "type": "string", "enum": ["Beginner", "Intermediate", "Expert"] },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["niche", "targetAudience", "experienceLevel"]
+    },
+    "SavedProduct": {
+      "title": "Saved Product",
+      "description": "Products analyzed and saved by the user.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "gmvPotential": { "type": "string" },
+        "trendingScore": { "type": "number" },
+        "competitionLevel": { "type": "string" },
+        "reasoning": { "type": "string" },
+        "keywords": { "type": "array", "items": { "type": "string" } },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "userId", "createdAt"]
+    },
+    "SavedScript": {
+      "title": "Saved Script",
+      "description": "Scripts generated and saved by the user.",
+      "type": "object",
+      "properties": {
+        "productName": { "type": "string" },
+        "hook": { "type": "string" },
+        "body": { "type": "string" },
+        "cta": { "type": "string" },
+        "isSafe": { "type": "boolean" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["productName", "userId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/preferences/default": {
+      "schema": "UserPreference",
+      "description": "User specific settings."
+    },
+    "/users/{userId}/products/{productId}": {
+      "schema": "SavedProduct",
+      "description": "User's saved product analyses."
+    },
+    "/users/{userId}/scripts/{scriptId}": {
+      "schema": "SavedScript",
+      "description": "User's saved scripts."
+    }
+  }
+}
